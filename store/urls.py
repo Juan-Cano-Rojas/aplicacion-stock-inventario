@@ -15,7 +15,11 @@ from .views import (
     ProductListView,
     OrderListView,
     DeliveryListView,
+    generic_edit_view,
+    generic_delete_view,
 )
+
+
 
 urlpatterns = [
     path('create-supplier/', create_supplier, name='create-supplier'),
@@ -33,4 +37,7 @@ urlpatterns = [
     path('product-list/', ProductListView.as_view(), name='product-list'),
     path('order-list/', OrderListView.as_view(), name='order-list'),
     path('delivery-list/', DeliveryListView.as_view(), name='delivery-list'),
+    
+    path('<str:model_name>/edit/<int:id>/', generic_edit_view, name='generic-edit'),
+    path('<str:model_name>/delete/<int:id>/', generic_delete_view, name='generic-delete'),
 ]

@@ -58,12 +58,13 @@
                                 <td>{{ supplier.address }}</td>
                                 <td>{{ supplier.user.email }}</td>
                                 <td>{{ supplier.created_date }}</td>
-                                {% comment %} <td>
-                                    <!-- Edit button -->
-                                    <button onclick="location.href='{% url 'edit_form' supplier.id %}'">Edit</button>
-                                    <!-- Delete button -->
-                                    <button onclick="confirmDeletion({{ supplier.id }});">Delete</button>
-                                </td> {% endcomment %}
+                                <td>
+                                    <a href="{% url 'generic-edit' 'supplier' supplier.id %}" class="btn btn-success">Edit</a> <!-- Updated URL name -->
+                                    <form action="{% url 'generic-delete' 'supplier' supplier.id %}" method="post" style="display:inline;">
+                                    {% csrf_token %}
+                                        <button class="btn btn-danger" type="submit">Eliminar</button>
+                                    </form>
+                                </td>
                             </tr>
                             {% endfor %}
                             {% else %}

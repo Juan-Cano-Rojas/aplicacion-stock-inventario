@@ -44,6 +44,7 @@
                                 <th>Nombre</th>
                                 <th>Cantidad</th>
                                 <th>Fecha</th>
+                                <th>Acciones</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -54,6 +55,10 @@
                                 <td>{{ product.name }}</td>
                                 <td>{{ product.sortno }}</td>
                                 <td>{{ product.created_date }}</td>
+                                <td>
+                                    <a href="}}" class="btn btn-success">Editar</a>
+                                    <a href="}}" class="btn btn-primary">Eliminar</a>
+                                </td>
                             </tr>
                             {% endfor %}
                             {% else %}

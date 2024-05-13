@@ -1,6 +1,6 @@
 {% extends 'base/base.html' %}
 
-{% block title %}Categorí as{% endblock title %}
+{% block title %}Categoría{% endblock title %}
 
 {% block breadcrumbs %}
 <div class="breadcrumbs">
@@ -44,6 +44,7 @@
                                 <th>Nombre</th>
                                 <th>Descripción</th>
                                 <th>Fecha</th>
+                                <th>Acciones</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -54,6 +55,10 @@
                                 <td>{{ season.name }}</td>
                                 <td>{{ season.description }}</td>
                                 <td>{{ season.created_date }}</td>
+                                <td>
+                                    <a href="}}" class="btn btn-success">Editar</a>
+                                    <a href="}}" class="btn btn-primary">Eliminar</a>
+                                </td>
                             </tr>
                             {% endfor %}
                             {% else %}

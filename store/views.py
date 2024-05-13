@@ -1,6 +1,11 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
+from django.urls import reverse
 from django.views.generic import ListView
 from django.contrib.auth.decorators import login_required
+from django.contrib.contenttypes.models import ContentType
+from django.forms import modelform_factory
+
+
 
 from users.models import User
 from .models import (
@@ -87,7 +92,7 @@ class BuyerListView(ListView):
     context_object_name = 'buyer'
 
 
-# Season views
+# Sede views
 @login_required(login_url='login')
 def create_season(request):
     forms = SeasonForm()
@@ -108,7 +113,7 @@ class SeasonListView(ListView):
     context_object_name = 'season'
 
 
-# Drop views
+# Brand views
 @login_required(login_url='login')
 def create_drop(request):
     forms = DropForm()
@@ -210,4 +215,47 @@ class DeliveryListView(ListView):
     model = Delivery
     template_name = 'store/delivery_list.html'
     context_object_name = 'delivery'
+    
+    
 
+
+
+# @login_required(login_url='login')
+# def generic_edit_view(request, model_name, id):
+#     content_type = ContentType.objects.get(model=model_name)
+#     model_class = content_type.model_class()
+#     instance = get_object_or_404(model_class, pk=id)
+#     form_class = modelform_factory(model_class, exclude=[])
+#     if request.method == 'POST':
+#         form = form_class(request.POST, instance=instance)
+#         if form.is_valid():
+#             form.save()
+#             return redirect(f'{model_name}-list')
+#     else:
+#         form = form_class(instance=instance)
+#     return render(request, 'store/edit_generic.html', {'form': form, 'object': instance})
+@login_required(login_url='login')
+def generic_edit_view(request, model_name, id):
+    content_type = ContentType.objects.get(model=model_name)
+    model_class = content_type.model_class()
+    instance = get_object_or_404(model_class, pk=id)
+    form_class = modelform_factory(model_class, exclude=[])
+    if request.method == 'POST':
+        form = form_class(request.POST, instance=instance)
+        if form.is_valid():
+            form.save()
+            return redirect(f'{model_name}-list')
+    else:
+        form = form_class(instance=instance)
+    return render(request, 'store/edit_generic.html', {'form': form, 'object': instance, 'model_name': model_name})
+
+
+@login_required(login_url='login')
+def generic_delete_view(request, model_name, id):
+    content_type = ContentType.objects.get(model=model_name)
+    model_class = content_type.model_class()
+    instance = get_object_or_404(model_class, pk=id)
+    if request.method == 'POST':
+        instance.delete()
+        return redirect(f'{model_name}-list')
+    return render(request, 'store/confirm_delete.html', {'object': instance})

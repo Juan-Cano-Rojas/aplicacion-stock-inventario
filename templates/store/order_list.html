@@ -50,6 +50,7 @@
                                 <th>Marca</th>
                                 <th>Fecha</th>
                                 <th>Status</th>
+                                <th>Acciones</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -79,6 +80,10 @@
                                     {% else %}
                                         <a class="btn btn-info" href="">{{ order.status }}</a>
                                     {% endif %}
+                                </td>
+                                <td>
+                                    <a href="}}" class="btn btn-success">Editar</a>
+                                    <a href="}}" class="btn btn-primary">Eliminar</a>
                                 </td>
                             </tr>
                             {% endfor %}

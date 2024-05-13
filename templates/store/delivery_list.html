@@ -44,6 +44,7 @@
                                 <th>Orden</th>
                                 <th>Nombre de la transportadora</th>
                                 <th>Fecha</th>
+                                <th>Acciones</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -54,6 +55,10 @@
                                 <td>{{ delivery.order }}</td>
                                 <td>{{ delivery.courier_name }}</td>
                                 <td>{{ delivery.created_date }}</td>
+                                <td>
+                                    <a href="}}" class="btn btn-success">Editar</a>
+                                    <a href="}}" class="btn btn-primary">Eliminar</a>
+                                </td>
                             </tr>
                             {% endfor %}
                             {% else %}

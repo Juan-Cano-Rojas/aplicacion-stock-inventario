@@ -1,0 +1,12 @@
+<!-- templates/store/edit_generic.html -->
+{% extends 'base/base.html' %}
+
+{% block content %}
+<h2>Edit {{ object }}</h2>
+<form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">Save</button>
+    <a href="{% url model_name|add:"-list" %}">Cancel</a>  <!-- Correct URL name -->
+</form>
+{% endblock %}
