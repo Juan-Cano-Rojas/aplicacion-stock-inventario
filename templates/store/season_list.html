@@ -56,8 +56,11 @@
                                 <td>{{ season.description }}</td>
                                 <td>{{ season.created_date }}</td>
                                 <td>
-                                    <a href="}}" class="btn btn-success">Editar</a>
-                                    <a href="}}" class="btn btn-primary">Eliminar</a>
+                                    <a href="{% url 'generic-edit' 'season' season.id %}" class="btn btn-success">Editar</a> <!-- Updated URL name -->
+                                    <form action="{% url 'generic-delete' 'season' season.id %}" method="post" style="display:inline;">
+                                    {% csrf_token %}
+                                        <button class="btn btn-danger" type="submit">Eliminar</button>
+                                    </form>
                                 </td>
                             </tr>
                             {% endfor %}

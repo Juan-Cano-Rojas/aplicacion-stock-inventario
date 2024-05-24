@@ -59,7 +59,7 @@
                                 <td>{{ supplier.user.email }}</td>
                                 <td>{{ supplier.created_date }}</td>
                                 <td>
-                                    <a href="{% url 'generic-edit' 'supplier' supplier.id %}" class="btn btn-success">Edit</a> <!-- Updated URL name -->
+                                    <a href="{% url 'generic-edit' 'supplier' supplier.id %}" class="btn btn-success">Editar</a> <!-- Updated URL name -->
                                     <form action="{% url 'generic-delete' 'supplier' supplier.id %}" method="post" style="display:inline;">
                                     {% csrf_token %}
                                         <button class="btn btn-danger" type="submit">Eliminar</button>

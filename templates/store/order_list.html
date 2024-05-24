@@ -82,8 +82,11 @@
                                     {% endif %}
                                 </td>
                                 <td>
-                                    <a href="}}" class="btn btn-success">Editar</a>
-                                    <a href="}}" class="btn btn-primary">Eliminar</a>
+                                    <a href="{% url 'generic-edit' 'order' order.id %}" class="btn btn-success">Editar</a> <!-- Updated URL name -->
+                                    <form action="{% url 'generic-delete' 'order' order.id %}" method="post" style="display:inline;">
+                                    {% csrf_token %}
+                                        <button class="btn btn-danger" type="submit">Eliminar</button>
+                                    </form>
                                 </td>
                             </tr>
                             {% endfor %}
