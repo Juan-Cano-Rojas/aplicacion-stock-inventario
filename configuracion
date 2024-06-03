@@ -1,0 +1,33 @@
+Cómo configurar la aplicacion
+
+- Clonar el Proyecto:
+
+git clone https://github.com/Juan-Cano-Rojas/aplicacion-stock-inventario/tree/main
+
+- Ir al Directorio del Proyecto
+
+ cd c:\aplicacion-stock-inventario
+
+- Crear un Entorno Virtual
+
+python -m venv venv
+
+- Activar el Entorno Virtual
+
+myenv\Scripts\activate
+
+- Instalar los Requisitos
+
+pip install -r requirements.txt
+
+- Migrar la Base de Datos
+
+python manage.py migrate
+
+- Crear un Superusuario
+
+python manage.py createsuperuser
+
+- Ejecutar el Proyecto
+
+python manage.py runserver
